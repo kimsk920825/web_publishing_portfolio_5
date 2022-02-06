@@ -6,101 +6,167 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  display: grid;
-  grid-template-columns: 1fr 8fr 1fr;
-  line-height: 1.5;
+  line-height: 1.6;
 }
-
-main {
-  grid-column-start: 2;
-}
-
-p {
+p:not(.bottom-etc p, .footer-grid p) {
   font-size: $fontMedium;
 }
-
 .hero {
-  margin-top: 150px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 150px;
-  .hero__photo {
-    height: 70vh;
-    width: 65%;
-    background-image: url(https://picsum.photos/450/460);
-  }
-  h2 {
-    font-weight: 500;
-    font-size: 0px;
-    margin-top: 80px;
-    margin-bottom: 120px;
-  }
-  p {
-    font-size: $fontMedium;
-    span {
-      font-size: $fontMedium - 10px;
-      margin-right: 50px;
+  display: grid;
+  grid-template-columns: 1fr 8fr 1fr;
+  .hero-wrapper {
+    grid-column-start: 2;
+    margin-top: 150px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 150px;
+    .hero__photo {
+      height: 70vh;
+      width: 65%;
+      background-image: url(https://picsum.photos/450/460);
+    }
+    h2 {
       font-weight: 500;
+      font-size: 32px;
+      margin-top: 80px;
+      margin-bottom: 120px;
+    }
+    p {
+      font-size: $fontMedium;
+      span {
+        font-size: $fontMedium - 10px;
+        margin-right: 50px;
+        font-weight: 500;
+      }
     }
   }
 }
 //section
 .products {
-  //article
-  .product {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    padding: 20px 0px;
-    border-top: $border;
-    gap: 20px;
-    //article 순서
-    &:nth-child(-n + 4) {
-      &:nth-child(even) {
-        div {
-          order: 1;
+  display: grid;
+  grid-template-columns: 1fr 8fr 1fr;
+  div {
+    grid-column-start: 2;
+    article {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      padding: 20px 0px;
+      border-top: $border;
+      gap: 20px;
+      div {
+        grid-column-start: 1;
+        .product__category {
+          @extend %categoryTitle;
+        }
+        p {
+          margin-bottom: 50px;
+        }
+        a {
+          @extend %btns;
         }
       }
-    }
-    //div -> h4, p,a
-    .product__category {
-      @extend %categoryTitle;
-    }
-    p {
-      margin-bottom: 50px;
-    }
-    a {
-      @extend %btns;
-    }
-    img {
-      width: 97%;
+      img {
+        grid-column-start: 2;
+        width: 97%;
+      }
+      &:nth-child(even) {
+        img {
+          grid-row-start: 1;
+          grid-column-start: 1;
+        }
+        div {
+          grid-row-start: 1;
+          grid-column-start: 2;
+        }
+      }
     }
   }
 }
 
 .quarterly__essay {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  padding-top: 20px;
-  border-top: $border;
-  .product {
-    div {
-      h4 {
-        @extend %categoryTitle;
-      }
-      img {
-        width: 97%;
-      }
-      p {
-        font-size: $Quarterly;
-      }
-      .btns__wrapper {
-        margin-top: 25px;
-        a {
-          @extend %btns;
+  grid-template-columns: 1fr 8fr 1fr;
+  .ad {
+    grid-column-start: 2;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding-top: 20px;
+    border-top: $border;
+    margin-bottom: 20px;
+    article {
+      div {
+        h4 {
+          @extend %categoryTitle;
+        }
+        img {
+          width: 97%;
+        }
+        p {
+          font-size: $Quarterly;
+        }
+        .btns__wrapper {
+          margin-top: 25px;
+
+          a {
+            @extend %btns;
+          }
         }
       }
+    }
+  }
+}
+.bottom-etc {
+  display: grid;
+  grid-template-columns: 1fr 8fr 1fr;
+  .extra-info {
+    grid-column-start: 2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 20px 0px 150px 0px;
+    margin-top: 10px;
+    gap: 15px;
+    border-top: $border;
+    h2 {
+      @extend %categoryTitle;
+      margin-bottom: 30px;
+    }
+    p {
+      margin-bottom: 30px;
+    }
+    a {
+      @extend %btns;
+    }
+  }
+}
+footer {
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 20px 50px 10px 50px;
+    background-color: #464646;
+    color: white;
+    text-decoration: none;
+    div:nth-child(1) {
+      padding-left: 30px;
+      h1 {
+        margin-bottom: 100px;
+      }
+      .footer__p {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+        a {
+          text-decoration: none !important;
+          color: white;
+        }
+      }
+    }
+    div:nth-child(2) {
+      display: flex;
+      justify-content: space-between;
+      font-size: 15px;
     }
   }
 }
